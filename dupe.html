@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portfolio of Fahri Desrian</title>
-<meta name="description" content="Portfolio of Fahri Desrian, a Mathematics undergraduate working on machine learning and network security.">
+<title>Yuurei — Mathematics & Machine Learning</title>
+<meta name="description" content="Portfolio of Yuurei, a Mathematics undergraduate working on machine learning and network security.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -151,9 +151,7 @@
   }
   .logo-dot{
     width:16px; height:16px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
+    position:relative;
     flex-shrink:0;
   }
   .logo-dot svg{ width:100%; height:100%; }
@@ -546,7 +544,7 @@
     opacity:0.7;
   }
 
-    /* ---- Featured vs Other subsections ---- */
+  /* ---- Featured vs Other subsections ---- */
   .projects-subhead{
     display:flex;
     align-items:center;
@@ -894,7 +892,7 @@
             <circle cx="8" cy="8" r="2.6" fill="#aecaa2"/>
           </svg>
         </span>
-        Fahri Desrian
+        Yuurei
       </a>
       <ul class="navbar" id="navbar">
         <li><a href="#about" class="nav-link active">About</a></li>
@@ -913,8 +911,17 @@
     <canvas id="hero-canvas"></canvas>
     <div class="hero-content">
 
+      <!--
+        PHOTO SLOT: replace src below with your formal photo (e.g. "profile.jpg",
+        placed in the same folder as this file). The frame is circular and
+        assumes a roughly square (1:1) photo — crop your photo to square first
+        for best results, since this uses object-fit: cover.
+        If you'd rather keep the abstract node-avatar instead of a photo,
+        delete the .avatar-photo block below and uncomment the .avatar-mark
+        SVG block that follows it.
+      -->
       <div class="avatar-photo">
-        <img src="images/profile.png" alt="Photo of Fahri" onerror="this.closest('.avatar-photo').style.display='none'; document.querySelector('.avatar-mark').style.display='block';">
+        <img src="profile.jpg" alt="Photo of Yuurei" onerror="this.closest('.avatar-photo').style.display='none'; document.querySelector('.avatar-mark').style.display='block';">
       </div>
       <div class="avatar-mark" aria-hidden="true" style="display:none;">
         <svg viewBox="0 0 100 100" fill="none">
@@ -936,11 +943,11 @@
       </div>
 
       <div class="hero-greeting">// Hello, I'm</div>
-      <h1>Fahri Desrian <span>.</span></h1>
+      <h1>Yuurei <span>.</span></h1>
       <p class="hero-tagline">
-        Mathematics undergraduate at <strong>Universitas Indonesia</strong> who enjoys building intelligent systems,
-        exploring <strong>machine learning</strong>, <strong>network security</strong>, and solving complex
-        problems through programming and mathematics.
+        Mathematics undergraduate at <strong>Universitas Indonesia</strong>, exploring the space between
+        <strong>machine learning</strong> and <strong>network security</strong> &mdash; currently building a
+        proactive intrusion detection system for my thesis.
       </p>
 
       <div class="hero-ctas">
@@ -949,13 +956,13 @@
       </div>
 
       <div class="hero-socials">
-        <a href="https://github.com/fahridesrian" class="social-icon" aria-label="GitHub" title="GitHub">
+        <a href="#" class="social-icon" aria-label="GitHub" title="GitHub — add your link">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.9.57.1.78-.25.78-.55v-2.17c-3.2.7-3.87-1.36-3.87-1.36-.53-1.33-1.3-1.68-1.3-1.68-1.06-.72.08-.7.08-.7 1.17.08 1.78 1.2 1.78 1.2 1.04 1.78 2.73 1.27 3.4.97.1-.75.4-1.27.73-1.56-2.55-.29-5.23-1.27-5.23-5.65 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.46.11-3.04 0 0 .96-.31 3.15 1.17a10.9 10.9 0 0 1 5.74 0c2.19-1.48 3.15-1.17 3.15-1.17.62 1.58.23 2.75.11 3.04.74.8 1.18 1.82 1.18 3.07 0 4.39-2.69 5.36-5.25 5.64.42.36.78 1.08.78 2.18v3.23c0 .3.2.65.79.55A11.5 11.5 0 0 0 23.5 12c0-6.27-5.23-11.5-11.5-11.5Z"/></svg>
         </a>
-        <a href="https://linkedin.com/in/fahri-desrian-049433247" class="social-icon" aria-label="LinkedIn" title="LinkedIn">
+        <a href="#" class="social-icon" aria-label="LinkedIn" title="LinkedIn — add your link">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.37V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.56V9h3.56v11.45Z"/></svg>
         </a>
-        <a href="mailto:fahri.desrian57@gmail.com" class="social-icon" aria-label="Email" title="Email">
+        <a href="#" class="social-icon" aria-label="Email" title="Email — add your address">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 6.5l8.4 6.3a1 1 0 0 0 1.2 0L21 6.5M4 19h16a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1Z"/></svg>
         </a>
       </div>
@@ -977,37 +984,31 @@
       <div class="about-grid">
         <div class="about-text reveal">
           <p>
-            I'm a Mathematics undergraduate at <strong>Universitas Indonesia</strong> with a strong foundation in 
-            mathematical modeling, statistics, and machine learning. My primary interests lie in <strong>machine learning</strong> and
-            <strong>cybersecurity</strong>, where I enjoy applying analytical thinking to 
-            solve real-world problems.
+            I'm a Mathematics undergraduate at <strong>Universitas Indonesia</strong>, currently finishing my
+            thesis (skripsi) on a hybrid proactive Network Intrusion Detection System &mdash; combining
+            <strong>Isolation Forest</strong> for anomaly scoring with a <strong>Temporal Fusion Transformer</strong>
+            for time-series forecasting, evaluated on the UNSW-NB15 dataset.
           </p>
           <p>
-            Throughout my academic journey, I have developed projects ranging from intelligent prediction systems and natural language 
-            processing to bioinformatics and network security. My current undergraduate thesis focuses on a hybrid proactive Network 
-            Intrusion Detection System that combines anomaly detection with time-series forecasting to improve early attack detection.
-          </p>
-          <p>
-            Beyond coursework, I enjoy exploring new technologies and expanding my technical skill set through personal projects. 
-            While Python is my primary language for machine learning and data science, I have also experimented with C++, CUDA for parallel 
-            computing, Rust, R, JavaScript with Vue.js, and MySQL across various academic and personal projects. I believe that choosing 
-            the right tool for a problem is just as important as building the solution itself.
+            [Placeholder — replace with your own framing.] I'm drawn to problems that sit between statistics and
+            systems: where a model's output has to mean something operationally, not just score well on a metric.
+            Outside the thesis, I work across data analysis, computer vision, and bioinformatics coursework, and
+            I'm comfortable moving between <strong>Windows</strong> and <strong>Arch Linux</strong> depending on
+            what a project needs.
           </p>
         </div>
 
         <div class="fact-card reveal">
           <h3>Quick facts</h3>
-          <div class="fact-row"><span>Location</span><span>Depok, West Java, Indonesia</span></div>
-          <div class="fact-row"><span>Education</span><span>Mathematics, Universitas Indonesia</span></div>
-          <div class="fact-row"><span>Interests</span><span>Machine Learning &amp; Network Security</span></div>
-          <div class="fact-row"><span>Current Focus</span><span>Hybrid Proactive NIDS</span></div>
+          <div class="fact-row"><span>Based in</span><span>Jakarta, Indonesia</span></div>
+          <div class="fact-row"><span>Studying</span><span>Mathematics, UI</span></div>
+          <div class="fact-row"><span>Focus</span><span>ML &amp; Network Security</span></div>
+          <div class="fact-row"><span>Thesis</span><span>Hybrid Proactive NIDS</span></div>
           <div class="chip-row">
             <span class="chip">Python</span>
-            <span class="chip">R</span>
-            <span class="chip">PyTorch</span>
-            <span class="chip">Linux</span>
-            <span class="chip">Docker</span>
-            <span class="chip">CUDA</span>
+            <span class="chip">Arch Linux</span>
+            <span class="chip">Time-Series</span>
+            <span class="chip">Computer Vision</span>
           </div>
         </div>
       </div>
@@ -1022,29 +1023,29 @@
         <p>A mix of thesis work, coursework, and independent projects. More details and links coming soon.</p>
       </div>
 
+      <div class="projects-subhead reveal">
+        <h3>Featured Projects</h3>
+        <div class="rule"></div>
+      </div>
+
       <div class="project-list">
 
         <!-- Example project, pre-filled from what you've shared so far. Confirm details / add screenshots. -->
         <div class="project-card reveal">
           <div class="project-media">
-            <img
-              src="images/pothrgbd-analysis.png"
-              alt="PothRGBD inference result showing RGB image, depth map, segmentation mask, and depth analysis">
+            <div class="media-placeholder">Add a screenshot or demo GIF of the segmentation output here</div>
           </div>
           <div class="project-body">
-            <div class="project-status"><span class="dot"></span> Completed</div>
-            <h4>PothRGBD: Pothole Detection with YOLOv8-Seg</h4>
+            <div class="project-status"><span class="dot"></span> Active</div>
+            <h4>PothRGBD &mdash; Pothole Detection with YOLOv8-Seg</h4>
             <p>
-              A pothole detection and segmentation pipeline built on YOLOv8-Seg using the PothRGBD
-              RGB-D dataset from Kaggle. The model was trained to accurately segment road damage
-              from paired RGB and depth imagery, followed by depth-based post-processing for
-              visualization and statistical analysis. Achieved a Mask mAP@50 of <strong>97.20%</strong>
-              and a Mask mAP@50-95 of <strong>63.96%</strong>.
+              A pothole detection and segmentation pipeline built on YOLOv8-seg, using paired RGB-D
+              imagery to localize and outline road damage. [Add 1&ndash;2 more sentences on your approach,
+              dataset, or results once finalized.]
             </p>
             <div class="tag-row">
               <span class="tag">Computer Vision</span>
               <span class="tag">YOLOv8-Seg</span>
-              <span class="tag">PyTorch</span>
               <span class="tag">RGB-D</span>
             </div>
             <div class="link-row">
@@ -1056,37 +1057,7 @@
           </div>
         </div>
 
-        <div class="project-card reveal">
-          <div class="project-media">
-            <img
-              src="images/yolo-sibi-demo.gif"
-              alt="Real-time Indonesian Sign Language recognition using YOLOv8 and DenseNet121">
-          </div>
-          <div class="project-body">
-            <div class="project-status"><span class="dot"></span> Completed</div>
-            <h4>YOLO-SIBI: Real-Time Indonesian Sign Language Recognition</h4>
-            <p>
-              A real-time Indonesian Sign Language (SIBI) recognition system combining YOLOv8
-              hand detection with deep learning image classifiers. The application detects hand
-              gestures from a webcam, classifies the corresponding alphabet, and displays
-              prediction confidence in real time. DenseNet121 achieved the best classification
-              accuracy of <strong>89.88%</strong>.
-            </p>
-            <div class="tag-row">
-              <span class="tag">Computer Vision</span>
-              <span class="tag">YOLOv8</span>
-              <span class="tag">Deep Learning</span>
-              <span class="tag">PyTorch</span>
-            </div>
-            <div class="link-row">
-              <a href="https://github.com/Yuuuuurei/YOLO-SIBI" target="_blank" class="link-btn">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.9.57.1.78-.25.78-.55v-2.17c-3.2.7-3.87-1.36-3.87-1.36-.53-1.33-1.3-1.68-1.3-1.68-1.06-.72.08-.7.08-.7 1.17.08 1.78 1.2 1.78 1.2 1.04 1.78 2.73 1.27 3.4.97.1-.75.4-1.27.73-1.56-2.55-.29-5.23-1.27-5.23-5.65 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.46.11-3.04 0 0 .96-.31 3.15 1.17a10.9 10.9 0 0 1 5.74 0c2.19-1.48 3.15-1.17 3.15-1.17.62 1.58.23 2.75.11 3.04.74.8 1.18 1.82 1.18 3.07 0 4.39-2.69 5.36-5.25 5.64.42.36.78 1.08.78 2.18v3.23c0 .3.2.65.79.55A11.5 11.5 0 0 0 23.5 12c0-6.27-5.23-11.5-11.5-11.5Z"/></svg>
-                View on GitHub
-              </a>
-            </div>
-          </div>
-        </div>
-
+        <!-- Empty featured slot — duplicate for each additional featured project -->
         <div class="project-card is-placeholder reveal">
           <div class="project-media">
             <div class="media-placeholder">Project image / dashboard screenshot</div>
@@ -1111,7 +1082,7 @@
         <h3>Other Projects</h3>
         <div class="rule"></div>
       </div>
-      
+
       <!-- Other Projects: lightweight cards, scrollable carousel, no media -->
       <div class="carousel-wrap reveal">
         <div class="carousel-track" id="otherProjectsTrack">
@@ -1278,23 +1249,23 @@
         <p>Open to conversations about machine learning, security, or anything math-adjacent.</p>
 
         <div class="contact-links">
-          <a href="mailto:fahri.desrian57@gmail.com" class="contact-link">
+          <a href="mailto:your.email@example.com" class="contact-link">
             <span class="icon-wrap">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 6.5l8.4 6.3a1 1 0 0 0 1.2 0L21 6.5M4 19h16a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1Z"/></svg>
             </span>
-            <span class="label"><span class="k">Email</span><span class="v">fahri.desrian57@gmail.com</span></span>
+            <span class="label"><span class="k">Email</span><span class="v">your.email@example.com</span></span>
           </a>
-          <a href="https://linkedin.com/in/fahri-desrian-049433247" target="_blank" class="contact-link">
+          <a href="#" class="contact-link">
             <span class="icon-wrap">
               <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.37V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.56V9h3.56v11.45Z"/></svg>
             </span>
-            <span class="label"><span class="k">LinkedIn</span><span class="v">linkedin.com/in/fahri-desrian-049433247</span></span>
+            <span class="label"><span class="k">LinkedIn</span><span class="v">linkedin.com/in/your-handle</span></span>
           </a>
-          <a href="https://github.com/fahridesrian" target="_blank" class="contact-link">
+          <a href="https://github.com/Yuuuuurei" target="_blank" class="contact-link">
             <span class="icon-wrap">
               <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.9.57.1.78-.25.78-.55v-2.17c-3.2.7-3.87-1.36-3.87-1.36-.53-1.33-1.3-1.68-1.3-1.68-1.06-.72.08-.7.08-.7 1.17.08 1.78 1.2 1.78 1.2 1.04 1.78 2.73 1.27 3.4.97.1-.75.4-1.27.73-1.56-2.55-.29-5.23-1.27-5.23-5.65 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.46.11-3.04 0 0 .96-.31 3.15 1.17a10.9 10.9 0 0 1 5.74 0c2.19-1.48 3.15-1.17 3.15-1.17.62 1.58.23 2.75.11 3.04.74.8 1.18 1.82 1.18 3.07 0 4.39-2.69 5.36-5.25 5.64.42.36.78 1.08.78 2.18v3.23c0 .3.2.65.79.55A11.5 11.5 0 0 0 23.5 12c0-6.27-5.23-11.5-11.5-11.5Z"/></svg>
             </span>
-            <span class="label"><span class="k">GitHub</span><span class="v">github.com/fahridesrian</span></span>
+            <span class="label"><span class="k">GitHub</span><span class="v">github.com/Yuuuuurei</span></span>
           </a>
         </div>
       </div>
@@ -1302,7 +1273,7 @@
   </section>
 
   <footer>
-    Built by Fahri Desrian &middot; <span id="year"></span>
+    Built by Yuurei &middot; <span id="year"></span>
   </footer>
 
 <script>
@@ -1452,6 +1423,25 @@
   initNodes();
   step();
   window.addEventListener('resize', () => { resize(); initNodes(); });
+
+  // ---------- Other Projects carousel ----------
+  const track = document.getElementById('otherProjectsTrack');
+  const prevBtn = document.getElementById('carouselPrev');
+  const nextBtn = document.getElementById('carouselNext');
+
+  function scrollAmount(){
+    const card = track.querySelector('.other-card');
+    return card ? card.offsetWidth + 18 : 300;
+  }
+  function updateCarouselButtons(){
+    prevBtn.disabled = track.scrollLeft <= 4;
+    nextBtn.disabled = track.scrollLeft >= track.scrollWidth - track.clientWidth - 4;
+  }
+  prevBtn.addEventListener('click', () => track.scrollBy({ left: -scrollAmount(), behavior: 'smooth' }));
+  nextBtn.addEventListener('click', () => track.scrollBy({ left: scrollAmount(), behavior: 'smooth' }));
+  track.addEventListener('scroll', updateCarouselButtons);
+  window.addEventListener('resize', updateCarouselButtons);
+  updateCarouselButtons();
 
   // ---------- Footer year ----------
   document.getElementById('year').textContent = new Date().getFullYear();
