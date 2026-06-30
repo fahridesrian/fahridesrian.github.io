@@ -894,6 +894,8 @@
   .contact-link svg{ width:17px; height:17px; color: var(--sage-bright); }
   .contact-link .label{
     text-align:left;
+    min-width:0;
+    flex:1;
   }
   .contact-link .label .k{
     display:block;
@@ -923,16 +925,19 @@
   @media (max-width: 720px){
     .navbar{
       position:fixed;
-      top:64px; left:0; right:0;
-      background: rgba(13,17,23,0.97);
+      top: var(--nav-height, 64px);
+      left:0; right:0;
+      background: rgb(13,17,23);
       backdrop-filter: blur(12px);
       flex-direction:column;
       align-items:center;
       gap:0;
       padding: 12px 0 24px;
       border-bottom:1px solid var(--slate-border-soft);
-      transform: translateY(-110%);
+      transform: translateY(calc(-100% - var(--nav-height, 64px)));
       transition: transform 0.3s ease;
+      max-height: calc(100vh - var(--nav-height, 64px));
+      overflow-y:auto;
     }
     .navbar.open{ transform:translateY(0); }
     .navbar li{ width:100%; text-align:center; }
@@ -1606,6 +1611,18 @@
   // ---------- Mobile nav toggle ----------
   const navToggle = document.getElementById('navToggle');
   const navbar = document.getElementById('navbar');
+  const navEl = document.querySelector('nav');
+
+  function setNavHeight(){
+    document.documentElement.style.setProperty('--nav-height', navEl.offsetHeight + 'px');
+  }
+  setNavHeight();
+  window.addEventListener('resize', setNavHeight);
+  window.addEventListener('orientationchange', setNavHeight);
+  if (document.fonts && document.fonts.ready){
+    document.fonts.ready.then(setNavHeight);
+  }
+
   navToggle.addEventListener('click', () => {
     const isOpen = navbar.classList.toggle('open');
     navToggle.setAttribute('aria-expanded', isOpen);
