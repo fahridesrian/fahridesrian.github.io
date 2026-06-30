@@ -431,6 +431,101 @@
   }
 
   /* ============ PROJECTS ============ */
+  /* ============ EXPERIENCE ============ */
+  #experience{ padding: var(--section-pad) 0 100px; }
+  .experience-list{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+    max-width:720px;
+    margin:0 auto;
+  }
+  .experience-card{
+    background: var(--slate-raised);
+    border:1px solid var(--slate-border);
+    border-radius:16px;
+    padding:28px 30px;
+    display:flex;
+    gap:20px;
+    transition: border-color 0.3s ease, transform 0.3s ease;
+  }
+  .experience-card:hover{
+    border-color: var(--sage-dim);
+    transform: translateY(-2px);
+  }
+  .experience-marker{
+    flex-shrink:0;
+    padding-top:4px;
+  }
+  .experience-marker .node{
+    width:12px; height:12px;
+    border-radius:50%;
+    border:1.5px solid var(--sage);
+    position:relative;
+  }
+  .experience-marker .node::after{
+    content:'';
+    position:absolute;
+    inset:3px;
+    border-radius:50%;
+    background: var(--sage);
+  }
+  .experience-body{ flex:1; min-width:0; }
+  .experience-top{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    gap:10px;
+    margin-bottom:6px;
+  }
+  .experience-body h4{
+    font-family: var(--font-display);
+    font-size:18px;
+    font-weight:600;
+    color:var(--warm);
+  }
+  .status-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    font-family: var(--font-mono);
+    font-size:11px;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    padding: 4px 10px;
+    border-radius:20px;
+    border:1px solid var(--sage-dim);
+    color: var(--sage-bright);
+    background: var(--sage-wash);
+  }
+  .status-badge .dot{
+    width:6px; height:6px;
+    border-radius:50%;
+    background: var(--sage-bright);
+  }
+  .status-badge.is-onhold{
+    border-color: var(--slate-border);
+    color: var(--warm-faint);
+    background: transparent;
+  }
+  .status-badge.is-onhold .dot{ background: var(--warm-faint); }
+  .experience-org{
+    font-size:14.5px;
+    color: var(--sage-bright);
+    font-weight:500;
+    margin-bottom:4px;
+  }
+  .experience-dates{
+    font-family: var(--font-mono);
+    font-size:12.5px;
+    color: var(--warm-faint);
+    margin-bottom:14px;
+  }
+  .experience-body p{
+    font-size:14.5px;
+    color: var(--warm-dim);
+  }
+
   #projects{ padding: 100px 0; background: var(--slate); border-top:1px solid var(--slate-border-soft); border-bottom:1px solid var(--slate-border-soft); }
   .project-list{
     display:flex;
@@ -967,6 +1062,7 @@
       </a>
       <ul class="navbar" id="navbar">
         <li><a href="#about" class="nav-link active">About</a></li>
+        <li><a href="#experience" class="nav-link">Experience</a></li>
         <li><a href="#projects" class="nav-link">Projects</a></li>
         <li><a href="#skills" class="nav-link">Skills</a></li>
         <li><a href="#courses" class="nav-link">Courses</a></li>
@@ -1083,12 +1179,59 @@
     </div>
   </section>
 
+  <section id="experience">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="eyebrow"><span class="node"></span> Experience</div>
+        <h2>Where I've worked</h2>
+        <p>Professional experience applying technical skills to build reliable software, intelligent systems, and practical technology solutions.</p>
+      </div>
+
+      <div class="experience-list">
+
+        <div class="experience-card reveal">
+          <div class="experience-marker"><span class="node"></span></div>
+          <div class="experience-body">
+            <div class="experience-top">
+              <h4>Machine Learning Engineer (Remote)</h4>
+              <span class="status-badge is-onhold"><span class="dot"></span> On Hold</span>
+            </div>
+            <div class="experience-org">Doctic</div>
+            <div class="experience-dates">January 2025 – April 2026</div>
+            <p>
+              Led the development of generative AI technologies for virtual hairstyle transformation, designing
+              scalable machine learning pipelines and training deep learning models for image inpainting and
+              style transfer. Worked with diffusion models, LoRA fine-tuning, and GANs to improve generation
+              quality and deployment efficiency, while collaborating with cross-functional teams on facial
+              analysis, personalized recommendation systems, backend integration, and future AI-driven AR
+              experiences.
+            </p>
+          </div>
+        </div>
+
+        <!-- Duplicate this block for additional experience entries -->
+        <!-- <div class="experience-card is-placeholder reveal" style="display:none;">
+          <div class="experience-marker"><span class="node"></span></div>
+          <div class="experience-body">
+            <div class="experience-top">
+              <h4>[Role Title]</h4>
+            </div>
+            <div class="experience-org">[Organization]</div>
+            <div class="experience-dates">[Month Year] &ndash; [Month Year]</div>
+            <p>[One to two sentences on your responsibilities and impact.]</p>
+          </div>
+        </div> -->
+
+      </div>
+    </div>
+  </section>
+
   <section id="projects">
     <div class="container">
       <div class="section-head reveal">
         <div class="eyebrow"><span class="node"></span> Projects</div>
         <h2>Things I've built</h2>
-        <p>A mix of thesis work, coursework, and independent projects. More details and links coming soon.</p>
+        <p>A collection of academic, professional, and personal projects spanning machine learning, software development, and data science.</p>
       </div>
 
       <div class="project-list">
@@ -1371,7 +1514,9 @@
       <div class="section-head reveal">
         <div class="eyebrow"><span class="node"></span> Skills</div>
         <h2>What I work with</h2>
-        <p>Grouped by area &mdash; replace or expand with your own categories and confidence level.</p>
+        <p>
+          Technologies and domains I frequently work with through academic research, professional experience, and personal projects.
+        </p>
       </div>
 
       <div class="skill-grid">
