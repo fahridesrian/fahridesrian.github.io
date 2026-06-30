@@ -454,8 +454,16 @@
     gap:6px;
     padding:6px;
     overflow-x:auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: thin;
+    scrollbar-color: var(--sage-dim) transparent;
   }
+  .project-media::-webkit-scrollbar{ height:6px; }
+  .project-media::-webkit-scrollbar-thumb{ background: var(--sage-dim); border-radius:10px; }
+  .project-media::-webkit-scrollbar-track{ background: transparent; }
+
   .project-media img, .project-media .media-placeholder{
+    scroll-snap-align: start;
     height:240px;
     width:auto;
     min-width:200px;
@@ -739,10 +747,18 @@
   .pill:hover{ border-color: var(--sage-dim); color: var(--warm); }
 
   .cert-grid{
-    display:grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap:20px;
+    display:flex;
+    gap:18px;
+    overflow-x:auto;
+    scroll-snap-type: x mandatory;
+    padding: 4px 4px 16px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--sage-dim) transparent;
   }
+  .cert-grid::-webkit-scrollbar{ height:6px; }
+  .cert-grid::-webkit-scrollbar-thumb{ background: var(--sage-dim); border-radius:10px; }
+  .cert-grid::-webkit-scrollbar-track{ background: transparent; }
+
   .cert-card{
     background: var(--slate-raised);
     border:1px solid var(--slate-border);
@@ -750,6 +766,8 @@
     padding:20px;
     text-align:center;
     transition: border-color 0.3s ease, transform 0.3s ease;
+    flex: 0 0 240px;
+    scroll-snap-align: start;
   }
   .cert-card:hover{ border-color: var(--sage-dim); transform: translateY(-2px); }
   .cert-card .cert-thumb{
@@ -773,6 +791,52 @@
   .cert-card .issuer{
     font-size:13px;
     color: var(--warm-faint);
+  }
+
+  .cert-carousel-nav{
+    display:flex;
+    justify-content:flex-end;
+    gap:10px;
+    margin: -4px 0 48px;
+  }
+
+  /* ---- External certificate links (Drive, etc.) ---- */
+  .cert-links{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:14px;
+    margin-top:25px;
+  }
+  .cert-link-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding: 13px 22px;
+    border-radius:10px;
+    border:1.5px solid var(--slate-border);
+    color: var(--warm);
+    font-size:14.5px;
+    font-weight:500;
+    transition: all 0.25s ease;
+  }
+  .cert-link-btn:hover{
+    border-color: var(--sage);
+    color: var(--sage-bright);
+    background: var(--sage-wash);
+    transform: translateY(-2px);
+  }
+  .cert-link-btn svg{ width:18px; height:18px; flex-shrink:0; }
+  .cert-link-btn.is-placeholder{
+    border-style: dashed;
+    color: var(--warm-faint);
+    opacity:0.75;
+  }
+  .cert-link-btn.is-placeholder:hover{
+    border-color: var(--slate-border);
+    color: var(--warm-faint);
+    background: transparent;
+    transform:none;
   }
 
   /* ============ CONTACT ============ */
@@ -999,7 +1063,7 @@
           <h3>Quick facts</h3>
           <div class="fact-row"><span>Location</span><span>Depok, West Java, Indonesia</span></div>
           <div class="fact-row"><span>Education</span><span>Mathematics, Universitas Indonesia</span></div>
-          <div class="fact-row"><span>Interests</span><span>Machine Learning &amp; Network Security</span></div>
+          <div class="fact-row"><span>Interests</span><span>Machine Learning &amp; Cybersecurity</span></div>
           <div class="fact-row"><span>Current Focus</span><span>Hybrid Proactive NIDS</span></div>
           <div class="chip-row">
             <span class="chip">Python</span>
@@ -1027,9 +1091,10 @@
         <!-- Example project, pre-filled from what you've shared so far. Confirm details / add screenshots. -->
         <div class="project-card reveal">
           <div class="project-media">
-            <img
-              src="images/pothrgbd-analysis.png"
-              alt="PothRGBD inference result showing RGB image, depth map, segmentation mask, and depth analysis">
+            <img src="images/pothrgbd/pothrgbd-analysis.png">
+            <img src="images/pothrgbd/pothrgbd-bb.jpg">
+            <img src="images/pothrgbd/pothrgbd-depth.png">
+            <img src="images/pothrgbd/pothrgbd-depth-prof.png">
           </div>
           <div class="project-body">
             <div class="project-status"><span class="dot"></span> Completed</div>
@@ -1087,7 +1152,79 @@
           </div>
         </div>
 
-        <div class="project-card is-placeholder reveal">
+        <div class="project-card reveal">
+          <div class="project-media">
+            <img
+              src="images/luad-gan.png"
+              alt="LUAD-GAN baseline and GAN-assisted clustering comparison">
+          </div>
+          <div class="project-body">
+            <div class="project-status"><span class="dot"></span> Completed</div>
+            <h4>LUAD-GAN: GAN-Assisted Clustering for Lung Adenocarcinoma</h4>
+            <p>
+              A deep learning framework for improving unsupervised clustering of Lung
+              Adenocarcinoma (LUAD) gene expression data using WGAN-GP. The pipeline generates
+              synthetic RNA-seq samples to augment the TCGA-LUAD dataset, enhancing clustering
+              quality while providing an interactive Streamlit interface for training,
+              visualization, and comparative analysis.
+            </p>
+            <div class="tag-row">
+              <span class="tag">Deep Learning</span>
+              <span class="tag">WGAN-GP</span>
+              <span class="tag">Bioinformatics</span>
+              <span class="tag">PyTorch</span>
+              <span class="tag">Streamlit</span>
+            </div>
+            <div class="link-row">
+              <a href="https://github.com/fahridesrian/LUAD-GAN" target="_blank" class="link-btn">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.9.57.1.78-.25.78-.55v-2.17c-3.2.7-3.87-1.36-3.87-1.36-.53-1.33-1.3-1.68-1.3-1.68-1.06-.72.08-.7.08-.7 1.17.08 1.78 1.2 1.78 1.2 1.04 1.78 2.73 1.27 3.4.97.1-.75.4-1.27.73-1.56-2.55-.29-5.23-1.27-5.23-5.65 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.46.11-3.04 0 0 .96-.31 3.15 1.17a10.9 10.9 0 0 1 5.74 0c2.19-1.48 3.15-1.17 3.15-1.17.62 1.58.23 2.75.11 3.04.74.8 1.18 1.82 1.18 3.07 0 4.39-2.69 5.36-5.25 5.64.42.36.78 1.08.78 2.18v3.23c0 .3.2.65.79.55A11.5 11.5 0 0 0 23.5 12c0-6.27-5.23-11.5-11.5-11.5Z"/>
+                </svg>
+                View on GitHub
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card reveal">
+          <div class="project-media">
+            <img src="images/steam-analysis/recommendation_rate_per_game.png">
+            <img src="images/steam-analysis/wordcloud_recommended.png">
+            <img src="images/steam-analysis/wordcloud_not_recommended.png">
+            <img src="images/steam-analysis/training_history.png">
+            <img src="images/steam-analysis/confusion_matrix.png">
+            <img src="images/steam-analysis/roc_curve.png">
+          </div>
+          <div class="project-body">
+            <div class="project-status"><span class="dot"></span> Completed</div>
+            <h4>Steam Review Sentiment Analysis with DistilBERT</h4>
+            <p>
+              A binary sentiment analysis pipeline for Steam user reviews using DistilBERT.
+              The project includes data preparation, exploratory data analysis, text preprocessing,
+              model training, and comprehensive evaluation on a balanced subset of 50,000 reviews
+              sampled from the top 20 Steam games. The model achieved an accuracy of
+              <strong>89%</strong> with a <strong>ROC-AUC of 0.956</strong>.
+            </p>
+            <div class="tag-row">
+              <span class="tag">NLP</span>
+              <span class="tag">DistilBERT</span>
+              <span class="tag">PyTorch</span>
+              <span class="tag">Transformers</span>
+            </div>
+            <div class="link-row">
+              <a href="https://github.com/fahridesrian/Steam-Review-Sentiment-Analysis"
+                target="_blank"
+                class="link-btn">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.9.57.1.78-.25.78-.55v-2.17c-3.2.7-3.87-1.36-3.87-1.36-.53-1.33-1.3-1.68-1.3-1.68-1.06-.72.08-.7.08-.7 1.17.08 1.78 1.2 1.78 1.2 1.04 1.78 2.73 1.27 3.4.97.1-.75.4-1.27.73-1.56-2.55-.29-5.23-1.27-5.23-5.65 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.46.11-3.04 0 0 .96-.31 3.15 1.17a10.9 10.9 0 0 1 5.74 0c2.19-1.48 3.15-1.17 3.15-1.17.62 1.58.23 2.75.11 3.04.74.8 1.18 1.82 1.18 3.07 0 4.39-2.69 5.36-5.25 5.64.42.36.78 1.08.78 2.18v3.23c0 .3.2.65.79.55A11.5 11.5 0 0 0 23.5 12c0-6.27-5.23-11.5-11.5-11.5Z"/>
+                </svg>
+                View on GitHub
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- <div class="project-card is-placeholder reveal">
           <div class="project-media">
             <div class="media-placeholder">Project image / dashboard screenshot</div>
           </div>
@@ -1103,7 +1240,7 @@
               <a href="#" class="link-btn">View on GitHub</a>
             </div>
           </div>
-        </div>
+        </div> -->
 
       </div>
 
@@ -1117,36 +1254,90 @@
         <div class="carousel-track" id="otherProjectsTrack">
 
           <div class="other-card">
-            <h4>[Project Title]</h4>
-            <p>[Short one-line description of what it does.]</p>
+            <h4>InstaCapt: AI Instagram Caption Generator</h4>
+            <p>
+              An AI-powered image captioning application using a fine-tuned BLIP model with FastAPI, Streamlit, and Vue.js interfaces.
+            </p>
             <div class="tag-row">
-              <span class="tag">[Tag]</span>
-              <span class="tag">[Tag]</span>
+              <span class="tag">Computer Vision</span>
+              <span class="tag">BLIP</span>
+              <span class="tag">FastAPI</span>
+              <span class="tag">PyTorch</span>
             </div>
-            <a href="#" class="link-btn">View on GitHub</a>
+            <a href="https://github.com/fahridesrian/instacapt"
+              target="_blank"
+              class="link-btn">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.9.57.1.78-.25.78-.55v-2.17c-3.2.7-3.87-1.36-3.87-1.36-.53-1.33-1.3-1.68-1.3-1.68-1.06-.72.08-.7.08-.7 1.17.08 1.78 1.2 1.78 1.2 1.04 1.78 2.73 1.27 3.4.97.1-.75.4-1.27.73-1.56-2.55-.29-5.23-1.27-5.23-5.65 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.46.11-3.04 0 0 .96-.31 3.15 1.17a10.9 10.9 0 0 1 5.74 0c2.19-1.48 3.15-1.17 3.15-1.17.62 1.58.23 2.75.11 3.04.74.8 1.18 1.82 1.18 3.07 0 4.39-2.69 5.36-5.25 5.64.42.36.78 1.08.78 2.18v3.23c0 .3.2.65.79.55A11.5 11.5 0 0 0 23.5 12c0-6.27-5.23-11.5-11.5-11.5Z"/>
+                </svg>
+              View on GitHub
+            </a>
           </div>
 
           <div class="other-card">
-            <h4>[Project Title]</h4>
-            <p>[Short one-line description of what it does.]</p>
+            <h4>Steam Game Popularity Predictor</h4>
+            <p>
+              A machine learning application that predicts Steam game popularity using CatBoost, featuring interactive visualizations and batch CSV predictions.
+            </p>
             <div class="tag-row">
-              <span class="tag">[Tag]</span>
-              <span class="tag">[Tag]</span>
+              <span class="tag">Machine Learning</span>
+              <span class="tag">CatBoost</span>
+              <span class="tag">Streamlit</span>
+              <span class="tag">Python</span>
             </div>
-            <a href="#" class="link-btn">View on GitHub</a>
+            <a href="https://github.com/fahridesrian/game-popularity-predictor"
+              target="_blank"
+              class="link-btn">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.9.57.1.78-.25.78-.55v-2.17c-3.2.7-3.87-1.36-3.87-1.36-.53-1.33-1.3-1.68-1.3-1.68-1.06-.72.08-.7.08-.7 1.17.08 1.78 1.2 1.78 1.2 1.04 1.78 2.73 1.27 3.4.97.1-.75.4-1.27.73-1.56-2.55-.29-5.23-1.27-5.23-5.65 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.46.11-3.04 0 0 .96-.31 3.15 1.17a10.9 10.9 0 0 1 5.74 0c2.19-1.48 3.15-1.17 3.15-1.17.62 1.58.23 2.75.11 3.04.74.8 1.18 1.82 1.18 3.07 0 4.39-2.69 5.36-5.25 5.64.42.36.78 1.08.78 2.18v3.23c0 .3.2.65.79.55A11.5 11.5 0 0 0 23.5 12c0-6.27-5.23-11.5-11.5-11.5Z"/>
+              </svg>
+              View on GitHub
+            </a>
           </div>
 
           <div class="other-card">
-            <h4>[Project Title]</h4>
-            <p>[Short one-line description of what it does.]</p>
+            <h4>Green Wallet Web Client</h4>
+            <p>
+              A responsive frontend for a digital wallet application built with Vue.js, featuring a clean user interface and seamless integration with backend services.
+            </p>
             <div class="tag-row">
-              <span class="tag">[Tag]</span>
-              <span class="tag">[Tag]</span>
+              <span class="tag">Vue.js</span>
+              <span class="tag">Tailwind CSS</span>
+              <span class="tag">JavaScript</span>
+              <span class="tag">Frontend</span>
             </div>
-            <a href="#" class="link-btn">View on GitHub</a>
+            <a href="https://github.com/fahridesrian/Green-Wallet-Frontend"
+              target="_blank"
+              class="link-btn">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.9.57.1.78-.25.78-.55v-2.17c-3.2.7-3.87-1.36-3.87-1.36-.53-1.33-1.3-1.68-1.3-1.68-1.06-.72.08-.7.08-.7 1.17.08 1.78 1.2 1.78 1.2 1.04 1.78 2.73 1.27 3.4.97.1-.75.4-1.27.73-1.56-2.55-.29-5.23-1.27-5.23-5.65 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.46.11-3.04 0 0 .96-.31 3.15 1.17a10.9 10.9 0 0 1 5.74 0c2.19-1.48 3.15-1.17 3.15-1.17.62 1.58.23 2.75.11 3.04.74.8 1.18 1.82 1.18 3.07 0 4.39-2.69 5.36-5.25 5.64.42.36.78 1.08.78 2.18v3.23c0 .3.2.65.79.55A11.5 11.5 0 0 0 23.5 12c0-6.27-5.23-11.5-11.5-11.5Z"/>
+              </svg>
+              View on GitHub
+            </a>
           </div>
 
           <div class="other-card">
+            <h4>Green Wallet Backend</h4>
+            <p>
+              A Python backend for a digital wallet application, providing database integration and API services for the Green Wallet web client.
+            </p>
+            <div class="tag-row">
+              <span class="tag">Python</span>
+              <span class="tag">MySQL</span>
+              <span class="tag">Flask</span>
+              <span class="tag">REST API</span>
+            </div>
+            <a href="https://github.com/fahridesrian/Green-Wallet-Backend-v1"
+              target="_blank"
+              class="link-btn">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.9.57.1.78-.25.78-.55v-2.17c-3.2.7-3.87-1.36-3.87-1.36-.53-1.33-1.3-1.68-1.3-1.68-1.06-.72.08-.7.08-.7 1.17.08 1.78 1.2 1.78 1.2 1.04 1.78 2.73 1.27 3.4.97.1-.75.4-1.27.73-1.56-2.55-.29-5.23-1.27-5.23-5.65 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.46.11-3.04 0 0 .96-.31 3.15 1.17a10.9 10.9 0 0 1 5.74 0c2.19-1.48 3.15-1.17 3.15-1.17.62 1.58.23 2.75.11 3.04.74.8 1.18 1.82 1.18 3.07 0 4.39-2.69 5.36-5.25 5.64.42.36.78 1.08.78 2.18v3.23c0 .3.2.65.79.55A11.5 11.5 0 0 0 23.5 12c0-6.27-5.23-11.5-11.5-11.5Z"/>
+              </svg>
+              View on GitHub
+            </a>
+          </div>
+
+          <!-- <div class="other-card">
             <h4>[Project Title]</h4>
             <p>[Short one-line description of what it does.]</p>
             <div class="tag-row">
@@ -1154,7 +1345,7 @@
               <span class="tag">[Tag]</span>
             </div>
             <a href="#" class="link-btn">View on GitHub</a>
-          </div>
+          </div> -->
 
         </div>
 
@@ -1186,9 +1377,9 @@
             Programming
           </h4>
           <ul>
-            <li>Python for data analysis, modeling, and scripting</li>
-            <li>Comfortable on both Windows and Arch Linux, including CLI tools like nmcli</li>
-            <li>[Add: R, SQL, or other languages you use]</li>
+            <li>Python for machine learning, data analysis, automation, and backend development</li>
+            <li>Experience with C++, Rust, R, JavaScript (Vue.js), and SQL across academic and personal projects</li>
+            <li>Version control using Git and development on both Windows and Linux environments</li>
           </ul>
         </div>
 
@@ -1198,36 +1389,76 @@
             Machine Learning
           </h4>
           <ul>
-            <li>Anomaly detection with Isolation Forest</li>
-            <li>Sequence modeling and forecasting with Temporal Fusion Transformer</li>
-            <li>[Add: specific frameworks &mdash; PyTorch, scikit-learn, etc.]</li>
+            <li>Supervised and unsupervised learning using scikit-learn, CatBoost, and PyTorch</li>
+            <li>Deep learning with Transformers, CNNs, GANs, YOLO, and Hugging Face models</li>
+            <li>Experience building NLP, computer vision, time-series forecasting, and predictive analytics applications</li>
           </ul>
         </div>
 
         <div class="skill-card reveal">
           <h4>
-            <svg class="skill-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 3v18h18M7 14l4-5 3 3 5-7"/></svg>
-            Statistics &amp; Data
+            <svg class="skill-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M12 3l7 3v5c0 5-3.2 8.4-7 10-3.8-1.6-7-5-7-10V6l7-3z"/>
+            </svg>
+            Cybersecurity
           </h4>
           <ul>
-            <li>Survival analysis, reliability theory, and MLE derivations</li>
-            <li>Working with structured datasets such as UNSW-NB15</li>
-            <li>[Add: visualization tools, e.g. Matplotlib, Seaborn]</li>
+            <li>Research on hybrid Network Intrusion Detection Systems using machine learning</li>
+            <li>Knowledge of ethical hacking, penetration testing, and Linux-based security environments</li>
+            <li>Hands-on experience with Kali Linux through personal learning and security-focused projects</li>
           </ul>
         </div>
 
         <div class="skill-card reveal">
           <h4>
-            <svg class="skill-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
-            Computer Vision
+            <svg class="skill-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M3 3v18h18"/>
+              <path d="M7 15l3-4 3 2 4-6"/>
+            </svg>
+            Data Science & Bioinformatics
           </h4>
+
           <ul>
-            <li>Object detection and segmentation with YOLOv8</li>
-            <li>Image processing fundamentals: pseudocolor, smoothing, sharpening</li>
-            <li>[Add: OpenCV or other CV libraries you use]</li>
+            <li>Data preprocessing, visualization, feature engineering, and model evaluation</li>
+            <li>Gene expression analysis, RNA-seq pipelines, clustering, and classification using R</li>
+            <li>Experience working with large structured datasets from real-world and research domains</li>
           </ul>
         </div>
 
+        <div class="skill-card reveal">
+          <h4>
+            <svg class="skill-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <rect x="3" y="4" width="18" height="14" rx="2"/>
+              <path d="M8 20h8"/>
+            </svg>
+            Software Development
+          </h4>
+
+          <ul>
+            <li>Backend development with Python and MySQL</li>
+            <li>Frontend development using Vue.js and modern JavaScript</li>
+            <li>Containerization with Docker and deployment of machine learning applications using Streamlit</li>
+          </ul>
+        </div>
+
+        <div class="skill-card reveal">
+          <h4>
+            <svg class="skill-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M12 2l8 4v12l-8 4-8-4V6z"/>
+              <path d="M12 2v20"/>
+              <path d="M4 6l16 12"/>
+              <path d="M20 6L4 18"/>
+            </svg>
+            High Performance Computing
+          </h4>
+
+          <ul>
+            <li>Parallel programming with CUDA for graph clustering algorithms</li>
+            <li>Scientific computing and mathematical modeling using C++</li>
+            <li>Experience implementing optimization algorithms for large-scale datasets</li>
+          </ul>
+        </div>
+        
       </div>
     </div>
   </section>
@@ -1239,33 +1470,82 @@
         <h2>Relevant coursework</h2>
       </div>
 
-      <div class="courses-sub reveal">Formal</div>
+      <div class="courses-sub reveal">Formal Coursework</div>
+
       <div class="pill-cluster reveal">
-        <span class="pill">[Course Name]</span>
-        <span class="pill">[Course Name]</span>
-        <span class="pill">[Course Name]</span>
-        <span class="pill">[Course Name]</span>
-        <span class="pill">[Course Name]</span>
-        <span class="pill">[Course Name]</span>
+        <span class="pill">Computational Intelligence</span>
+        <span class="pill">Data Science</span>
+        <!-- <span class="pill">Introduction to Data Science</span> -->
+        <span class="pill">Parallel Computing</span>
+        <span class="pill">Design & Analysis of Algorithms</span>
+        <!-- <span class="pill">Mathematical Programming</span> -->
+        <!-- <span class="pill">Numerical Mathematics</span> -->
+        <!-- <span class="pill">Network Optimization</span> -->
+        <!-- <span class="pill">Graph Theory</span> -->
+        <span class="pill">Mathematical Modeling</span>
+        <span class="pill">Web Mining</span>
+        <span class="pill">Bioinformatics & AI</span>
+        <span class="pill">Digital Image Processing</span>
+        <span class="pill">Genomic Data Science</span>
+        <span class="pill">Unstructured Data Analysis</span>
       </div>
 
       <div class="courses-sub reveal">Non-formal</div>
-      <div class="cert-grid reveal">
-        <div class="cert-card">
-          <div class="cert-thumb">Certificate image</div>
-          <h5>[Certificate Title]</h5>
-          <div class="issuer">Issued by [Platform]</div>
+      <div class="carousel-wrap reveal">
+        <div class="cert-grid" id="certTrack">
+          <div class="cert-card">
+            <img src="images/certificates/Certificates-34.png">
+            <h5>Ethical Hacking: Evading IDS, Firewalls, and Honeypots</h5>
+            <div class="issuer">Issued by LinkedIn Learning</div>
+          </div>
+          <div class="cert-card">
+            <img src="images/certificates/Certificates-32.png">
+            <h5>Ethical Hacking: Session Hijacking</h5>
+            <div class="issuer">Issued by LinkedIn Learning</div>
+          </div>
+          <div class="cert-card">
+            <img src="images/certificates/Certificates-25.png">
+            <h5>Ethical Hacking: Vulnerability Analysis</h5>
+            <div class="issuer">Issued by LinkedIn Learning</div>
+          </div>
+          <div class="cert-card">
+            <img src="images/certificates/Certificates-27.png">
+            <h5>Ethical Hacking: System Hacking</h5>
+            <div class="issuer">Issued by LinkedIn Learning</div>
+          </div>
+          <div class="cert-card">
+            <img src="images/certificates/Certificates-30.png">
+            <h5>Ethical Hacking: Social Engineering</h5>
+            <div class="issuer">Issued by LinkedIn Learning</div>
+          </div>
+          <div class="cert-card">
+            <img src="images/certificates/Certificates-36.png">
+            <h5>Ethical Hacking: Hacking Web Servers and Web Applications</h5>
+            <div class="issuer">Issued by LinkedIn Learning</div>
+          </div>
+          <div class="cert-card">
+            <img src="images/certificates/Certificates-13.png">
+            <h5>Advanced Kali Linux</h5>
+            <div class="issuer">Issued by LinkedIn Learning</div>
+          </div>
         </div>
-        <div class="cert-card">
-          <div class="cert-thumb">Certificate image</div>
-          <h5>[Certificate Title]</h5>
-          <div class="issuer">Issued by [Platform]</div>
-        </div>
-        <div class="cert-card">
-          <div class="cert-thumb">Certificate image</div>
-          <h5>[Certificate Title]</h5>
-          <div class="issuer">Issued by [Platform]</div>
-        </div>
+      </div>
+
+      <!--
+        Full certificate archive: link out to a Google Drive folder containing
+        all PDF certificates. Add more buttons (e.g. a second Drive folder,
+        Credly profile, LinkedIn certifications) by duplicating the
+        .cert-link-btn block — remove "is-placeholder" once a real link is set.
+      -->
+      <div class="cert-links reveal">
+        <a href="https://drive.google.com/file/d/1j4iP_mkGdnmlGCHYrA6p1YpOFWJRbb68/view?usp=sharing" target="_blank" rel="noopener" class="cert-link-btn">
+          View All Certificates
+        </a>
+        <!-- <a href="#" class="cert-link-btn is-placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg>
+          [Add more links here]
+        </a> -->
+
       </div>
     </div>
   </section>
@@ -1455,6 +1735,35 @@
 
   // ---------- Footer year ----------
   document.getElementById('year').textContent = new Date().getFullYear();
+
+  // ---------- Reusable horizontal carousel (Other Projects, Certificates) ----------
+  function setupCarousel(trackId, prevId, nextId, navSelector){
+    const track = document.getElementById(trackId);
+    const prevBtn = document.getElementById(prevId);
+    const nextBtn = document.getElementById(nextId);
+    if (!track || !prevBtn || !nextBtn) return;
+
+    const navEl = prevBtn.closest(navSelector);
+
+    function scrollAmount(){
+      const card = track.firstElementChild;
+      return card ? card.offsetWidth + 18 : 300;
+    }
+    function update(){
+      const hasOverflow = track.scrollWidth > track.clientWidth + 4;
+      if (navEl) navEl.style.display = hasOverflow ? 'flex' : 'none';
+      prevBtn.disabled = track.scrollLeft <= 4;
+      nextBtn.disabled = track.scrollLeft >= track.scrollWidth - track.clientWidth - 4;
+    }
+    prevBtn.addEventListener('click', () => track.scrollBy({ left: -scrollAmount(), behavior: 'smooth' }));
+    nextBtn.addEventListener('click', () => track.scrollBy({ left: scrollAmount(), behavior: 'smooth' }));
+    track.addEventListener('scroll', update);
+    window.addEventListener('resize', update);
+    update();
+  }
+
+  setupCarousel('otherProjectsTrack', 'carouselPrev', 'carouselNext', '.carousel-nav');
+  setupCarousel('certTrack', 'certPrev', 'certNext', '.cert-carousel-nav');
 </script>
 
 </body>
